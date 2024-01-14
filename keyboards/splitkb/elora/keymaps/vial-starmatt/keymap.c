@@ -256,19 +256,110 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * DO NOT edit the rev1.c file; instead override the weakly defined default functions by your own.
  */
 
-/* DELETE THIS LINE TO UNCOMMENT (1/2)
 #ifdef OLED_ENABLE
+void render_blank_line(bool inverted) {
+    oled_write_P(PSTR("          "), inverted);
+}
+
+void render_current_layer(void) {
+    oled_write_P(PSTR(" "), true);
+    oled_write_P(PSTR(" Layer "), false);
+    oled_write_P(PSTR("  "), true);
+    render_blank_line(false);
+
+    switch (get_highest_layer(layer_state)) {
+        case _QWERTY:
+            oled_write_P(PSTR("Qwerty    "), false);
+            break;
+        case _NAV:
+            oled_write_P(PSTR("Nav/Media "), false);
+            break;
+        case _SYM:
+            oled_write_P(PSTR("Symbols   "), false);
+            break;
+        case _ADJUST:
+            oled_write_P(PSTR("RGB Adjust"), false);
+            break;
+        case _GSHFT:
+            oled_write_P(PSTR("Gameshift "), false);
+            break;
+        default:
+            oled_write_P(PSTR("Undefined "), false);
+            break;
+    }
+}
+
+void render_active_mods(uint8_t modifiers, led_t led_usb_state) {
+    oled_write_P(PSTR(" "), true);
+    oled_write_P(PSTR(" Mods "), false);
+    oled_write_P(PSTR("   "), true);
+    render_blank_line(false);
+
+    // First line
+    if (modifiers & MOD_MASK_CTRL) {
+        oled_write_P(PSTR("CTRL "), true);
+    } else {
+        oled_write_P(PSTR("CTRL "), false);
+    }
+
+    if (modifiers & MOD_MASK_ALT) {
+        oled_write_P(PSTR("ALT  "), true);
+    } else {
+        oled_write_P(PSTR("ALT  "), false);
+    }
+
+    // Second line
+    if (modifiers & MOD_MASK_SHIFT) {
+        oled_write_P(PSTR("SHFT "), true);
+    } else {
+        oled_write_P(PSTR("SHFT "), false);
+    }
+
+    if (modifiers & MOD_MASK_GUI) {
+        oled_write_P(PSTR("META "), true);
+    } else {
+        oled_write_P(PSTR("META "), false);
+    }
+
+    render_blank_line(false);
+
+    // Third line
+    if (led_usb_state.caps_lock) {
+        oled_write_P(PSTR("["), false);
+        oled_write_P(PSTR("*"), false);
+        oled_write_P(PSTR("] CapsLk"), false);
+    } else {
+        oled_write_P(PSTR("[ ] CapsLk"), false);
+    }
+}
+
+void render_wpm(void) {
+    oled_write_P(PSTR(" "), true);
+    oled_write_P(PSTR(" WPM "), false);
+    oled_write_P(PSTR("    "), true);
+    render_blank_line(false);
+    oled_write_P(PSTR("       "), false);
+    oled_write_P(get_u8_str(get_current_wpm(), ' '), false);
+}
+
 bool oled_task_user(void) {
-  // Your code goes here
+    render_wpm();
+    render_blank_line(false);
+    render_blank_line(false);
+    render_current_layer();
+    render_blank_line(false);
+    render_blank_line(false);
+    render_active_mods(get_mods(), host_keyboard_led_state());
+
+    return false;
 }
 #endif
 
-#ifdef ENCODER_ENABLE
-bool encoder_update_user(uint8_t index, bool clockwise) {
-  // Your code goes here
-}
-#endif
-DELETE THIS LINE TO UNCOMMENT (2/2) */
+// #ifdef ENCODER_ENABLE
+// bool encoder_update_user(uint8_t index, bool clockwise) {
+//   // Your code goes here
+// }
+// #endif
 
 // Vial-specific encoder code
 
