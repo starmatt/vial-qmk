@@ -343,13 +343,13 @@ void render_wpm(void) {
 }
 
 bool oled_task_user(void) {
-    render_wpm();
-    render_blank_line(false);
     render_blank_line(false);
     render_current_layer();
     render_blank_line(false);
+    render_wpm();
     render_blank_line(false);
     render_active_mods(get_mods(), host_keyboard_led_state());
+    render_blank_line(false);
 
     return false;
 }
