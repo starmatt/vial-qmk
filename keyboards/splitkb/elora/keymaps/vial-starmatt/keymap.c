@@ -83,9 +83,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |------|  |------|      |------+------+------+------+------+--------|
  * |  F12   | KP_1 | KP_2 |   ↑  | KP_3 | KP_4 |      |      |  |      |      | Home | PgDn | PgUp | End  | VolUp|        |
  * |--------+------+------+------+------+------|      |------|  |------|      |------+------+------+------+------+--------|
- * |        | ,  < |  ←   |   ↓  |   →  | .  > |      |      |  |      |      |  ←   |   ↓  |   ↑  |   →  | VolDn| Insert |
+ * |        | KP_5 |  ←   |   ↓  |   →  | KP_6 |      |      |  |      |      |  ←   |   ↓  |   ↑  |   →  | VolDn| Insert |
  * |--------+------+------+------+------+------+------+------|  |------|------+------+------+------+------+------+--------|
- * |        | KP / | KP * | KP - | KP = | KP + |      |      |  |      |      |M Prev| Pause|M Play|M Next|VolMut| PrtSc  |
+ * |        | KP . | KP / | KP + | KP - | KP * |      |      |  |      |      |M Prev|M Stop|M Play|M Next|VolMut| PrtSc  |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        |      |      |      |      |      |  |      |      |      |      |      |
@@ -97,9 +97,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
     [_NAV] = LAYOUT_myr(
       KC_F11 ,  KC_F1 ,  KC_F2 ,  KC_F3 ,  KC_F4 ,  KC_F5 ,          _______, _______,           KC_F6 ,  KC_F7 ,  KC_F8 ,  KC_F9 , KC_F10 , _______,
-      KC_F12 ,  KC_P1 ,  KC_P2 ,  KC_UP ,  KC_P4 ,  KC_P5 ,          _______, _______,          KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_VOLU, _______,
-      _______,KC_COMMA, KC_LEFT, KC_DOWN,KC_RIGHT, KC_DOT ,          _______, _______,          KC_LEFT, KC_DOWN,  KC_UP , KC_RGHT, KC_VOLD, KC_INS,
-      _______, KC_PSLS, KC_PAST, KC_PMNS, KC_PEQL, KC_PPLS, _______, _______, _______,  ADJUST, KC_MPRV,KC_PAUSE, KC_MPLY, KC_MNXT, KC_MUTE, KC_PSCR,
+      KC_F12 ,  KC_P1 ,  KC_P2 ,  KC_UP ,  KC_P3 ,  KC_P4 ,          _______, _______,          KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_VOLU, _______,
+      _______,  KC_P5 , KC_LEFT, KC_DOWN,KC_RIGHT,  KC_P6 ,          _______, _______,          KC_LEFT, KC_DOWN,  KC_UP , KC_RGHT, KC_VOLD, KC_INS,
+      _______, KC_PDOT, KC_PSLS, KC_PPLS, KC_PMNS, KC_PAST, _______, _______, _______,  ADJUST, KC_MPRV, KC_MSTP, KC_MPLY, KC_MNXT, KC_MUTE, KC_PSCR,
                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
 
       _______, _______, _______, _______,          _______,                   _______, _______, _______, _______,          _______
@@ -111,11 +111,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-------------------------------------------.      ,------.  ,------.      ,-------------------------------------------.
  * |        |      |      |      |      |      |      |      |  |      |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+------|      |------|  |------|      |------+------+------+------+------+--------|
- * |        |      |  %   |  €   |  $   |      |      |      |  |      |      |   '  |  "   |  ^   |  `   |  ~   |  Del   |
+ * |        |      |  %   |  €   |  $   |      |      |      |  |      |      |   _  |  ^   |  `   |  ~   |      |  Del   |
  * |--------+------+------+------+------+------|      |------|  |------|      |------+------+------+------+------+--------|
- * |        |  <   |  {   |  [   |  (   |  \   |      |      |  |      |      |   /  |  )   |  ]   |  }   |  >   |        |
+ * |        |  <   |  {   |  [   |  (   |  '   |      |      |  |      |      |   "  |  )   |  ]   |  }   |  >   |        |
  * |--------+------+------+------+------+------+------+------|  |------|------+------+------+------+------+------+--------|
- * |        |  !   |  @   |  #   |  &   |  |   |      |      |  |      |      |   *  |  -   |  =   |  +   |  _   |        |
+ * |        |  !   |  @   |  #   |  &   |  |   |      |      |  |      |      |   \  |  +   |  -   |  =   |  *   |        |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        |      |      |      |      |      |  |      |      |      |      |      |
@@ -126,10 +126,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------'      `------'                `---------------------------'      '------'
  */
     [_SYM] = LAYOUT_myr(
-      KC_F11 ,  KC_F1 ,  KC_F2 ,  KC_F3 ,  KC_F4 ,  KC_F5 ,          _______, _______,           KC_F6 ,  KC_F7 ,  KC_F8 ,  KC_F9 , KC_F10 , _______,
-      KC_F12 , XXXXXXX, KC_PERC,  EURO  , KC_DLR , XXXXXXX,          _______, _______,         KC_QUOTE, KC_DQUO, KC_CIRC,KC_GRAVE, KC_TILD, KC_DEL ,
-      _______,  KC_LT , KC_LCBR, KC_LBRC, KC_LPRN, KC_BSLS,          _______, _______,          KC_SLSH, KC_RPRN, KC_RBRC, KC_RCBR,  KC_GT , _______,
-      _______, KC_EXLM,  KC_AT , KC_HASH, KC_AMPR, KC_PIPE, _______, _______, _______, _______, KC_ASTR,KC_MINUS,KC_EQUAL, KC_PLUS, KC_UNDS, _______,
+      KC_F11 ,  KC_F1 ,  KC_F2 ,  KC_F3 ,  KC_F4 ,  KC_F5 ,          _______, _______,           KC_F6  ,  KC_F7 ,  KC_F8  , KC_F9  , KC_F10 , _______,
+      KC_F12 , XXXXXXX, KC_PERC,  EURO  , KC_DLR , XXXXXXX,          _______, _______,           KC_UNDS, KC_CIRC, KC_GRAVE, KC_TILD, XXXXXXX, KC_DEL ,
+      _______,  KC_LT , KC_LCBR, KC_LBRC, KC_LPRN, KC_QUOTE,          _______, _______,          KC_DQUO, KC_RPRN, KC_RBRC , KC_RCBR,  KC_GT , _______,
+      _______, KC_EXLM,  KC_AT , KC_HASH, KC_AMPR, KC_PIPE, _______, _______, _______, _______,  KC_BSLS, KC_PLUS, KC_MINUS,KC_EQUAL, KC_ASTR, _______,
                                  _______, _______, _______, _______, KC_BSPC, _______, _______, _______, _______, _______,
 
       _______, _______, _______, _______,          _______,                   _______, _______, _______, _______,          _______
