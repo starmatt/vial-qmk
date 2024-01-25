@@ -16,6 +16,8 @@
 
 #include QMK_KEYBOARD_H
 
+#include "bitmaps.h"
+
 enum layers {
     _QWERTY = 0,
     _NAV,
@@ -191,7 +193,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        KC_TAB ,  KC_T  ,  KC_Q  ,  KC_W  ,  KC_E  ,  KC_R  ,          _______, _______,          _______, _______, _______, _______, _______, _______,
        KC_LCTL,  KC_G  ,  KC_A  ,  KC_S  ,  KC_D  ,  KC_F  ,          _______, _______,          _______, _______, _______, _______, _______, _______,
        KC_LSFT,  KC_B  ,  KC_Z  ,  KC_X  ,  KC_C  ,  KC_V  ,  GSHFT , _______, _______, _______, _______, _______, _______, _______, _______, _______,
-                                  _______, KC_LGUI, KC_LALT, KC_SPC , _______, _______, _______, _______, _______, _______,
+                                  _______, KC_LGUI, KC_LALT, KC_SPC ,  NAV   , _______, _______, _______, _______, _______,
 
        _______, _______, _______, _______,          _______,                   _______, _______, _______, _______,          _______
      ),
@@ -261,95 +263,97 @@ void render_blank_line(bool inverted) {
     oled_write_P(PSTR("          "), inverted);
 }
 
-void render_current_layer(void) {
-    oled_write_P(PSTR(" "), true);
-    oled_write_P(PSTR(" Layer "), false);
-    oled_write_P(PSTR("  "), true);
-    render_blank_line(false);
+static void render_layers(uint8_t start_row) {
+    oled_set_cursor(0, start_row);
 
-    switch (get_highest_layer(layer_state)) {
+    switch (get_highest_layer(layer_state  | default_layer_state)) {
         case _QWERTY:
-            oled_write_P(PSTR("Qwerty    "), false);
+            oled_write_raw_P(base, sizeof(base));
             break;
         case _NAV:
-            oled_write_P(PSTR("Nav/Media "), false);
+            oled_write_raw_P(nav, sizeof(nav));
             break;
         case _SYM:
-            oled_write_P(PSTR("Symbols   "), false);
+            oled_write_raw_P(sym, sizeof(sym));
             break;
         case _ADJUST:
-            oled_write_P(PSTR("RGB Adjust"), false);
+            oled_write_raw_P(adjst, sizeof(adjst));
             break;
         case _GSHFT:
-            oled_write_P(PSTR("Gameshift "), false);
+            oled_write_raw_P(gshft, sizeof(gshft));
             break;
         default:
             oled_write_P(PSTR("Undefined "), false);
-            break;
     }
 }
 
-void render_active_mods(uint8_t modifiers, led_t led_usb_state) {
-    oled_write_P(PSTR(" "), true);
-    oled_write_P(PSTR(" Mods "), false);
-    oled_write_P(PSTR("   "), true);
-    render_blank_line(false);
-
-    // First line
-    if (modifiers & MOD_MASK_CTRL) {
-        oled_write_P(PSTR("CTRL "), true);
+void render_mods_meta_alt(uint8_t mods) {
+    if (mods & MOD_MASK_GUI) {
+        if (mods & MOD_MASK_ALT) {
+            oled_write_raw_P(meta_1_alt_1, sizeof(meta_1_alt_1));
+        } else {
+            oled_write_raw_P(meta_1_alt_0, sizeof(meta_1_alt_0));
+        }
     } else {
-        oled_write_P(PSTR("CTRL "), false);
+        if (mods & MOD_MASK_ALT) {
+            oled_write_raw_P(meta_0_alt_1, sizeof(meta_0_alt_1));
+        } else {
+            oled_write_raw_P(meta_0_alt_0, sizeof(meta_0_alt_0));
+        }
     }
+}
 
-    if (modifiers & MOD_MASK_ALT) {
-        oled_write_P(PSTR("ALT  "), true);
+void render_mods_ctrl_shft(uint8_t mods) {
+    if (mods & MOD_MASK_SHIFT) {
+        if (mods & MOD_MASK_CTRL) {
+            oled_write_raw_P(ctrl_1_shft_1, sizeof(ctrl_1_shft_1));
+        } else {
+            oled_write_raw_P(ctrl_0_shft_1, sizeof(ctrl_0_shft_1));
+        }
     } else {
-        oled_write_P(PSTR("ALT  "), false);
+        if (mods & MOD_MASK_CTRL) {
+            oled_write_raw_P(ctrl_1_shft_0, sizeof(ctrl_1_shft_0));
+        } else {
+            oled_write_raw_P(ctrl_0_shft_0, sizeof(ctrl_0_shft_0));
+        }
     }
+}
 
-    // Second line
-    if (modifiers & MOD_MASK_SHIFT) {
-        oled_write_P(PSTR("SHFT "), true);
-    } else {
-        oled_write_P(PSTR("SHFT "), false);
-    }
+void render_mods(uint8_t start_row) {
+    uint8_t modifiers = get_mods() | get_oneshot_mods();
 
-    if (modifiers & MOD_MASK_GUI) {
-        oled_write_P(PSTR("META "), true);
-    } else {
-        oled_write_P(PSTR("META "), false);
-    }
+    oled_set_cursor(0, start_row);
+    render_mods_meta_alt(modifiers);
 
-    render_blank_line(false);
+    oled_set_cursor(0, start_row + 2);
+    render_mods_ctrl_shft(modifiers);
+}
 
-    // Third line
+void render_caps(uint8_t start_row) {
+     led_t led_usb_state = host_keyboard_led_state();
+
+    oled_set_cursor(0, start_row);
+
     if (led_usb_state.caps_lock) {
-        oled_write_P(PSTR("["), false);
-        oled_write_P(PSTR("*"), false);
-        oled_write_P(PSTR("] CapsLk"), false);
+        oled_write_raw_P(caps_1, sizeof(caps_1));
     } else {
-        oled_write_P(PSTR("[ ] CapsLk"), false);
+        oled_write_raw_P(caps_0, sizeof(caps_0));
     }
 }
 
-void render_wpm(void) {
-    oled_write_P(PSTR(" "), true);
-    oled_write_P(PSTR(" WPM "), false);
-    oled_write_P(PSTR("    "), true);
-    render_blank_line(false);
-    oled_write_P(PSTR("       "), false);
+void render_wpm(uint8_t start_row) {
+    oled_set_cursor(0, start_row);
+    oled_write_raw_P(wpm_bm, sizeof(wpm_bm));
+
+    oled_set_cursor(6, start_row + 1);
     oled_write_P(get_u8_str(get_current_wpm(), ' '), false);
 }
 
 bool oled_task_user(void) {
-    render_blank_line(false);
-    render_current_layer();
-    render_blank_line(false);
-    render_wpm();
-    render_blank_line(false);
-    render_active_mods(get_mods(), host_keyboard_led_state());
-    render_blank_line(false);
+    render_wpm(0);
+    render_layers(3);
+    render_mods(10);
+    render_caps(14);
 
     return false;
 }
