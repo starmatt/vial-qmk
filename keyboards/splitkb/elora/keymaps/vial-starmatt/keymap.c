@@ -352,8 +352,8 @@ void render_wpm(uint8_t start_row) {
 bool oled_task_user(void) {
     render_wpm(0);
     render_layers(3);
-    render_mods(10);
-    render_caps(14);
+    render_mods(8);
+    render_caps(12);
 
     return false;
 }
