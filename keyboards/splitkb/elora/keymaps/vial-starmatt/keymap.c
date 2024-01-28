@@ -20,11 +20,11 @@
 
 enum layers {
     _QWERTY = 0,
+    _GSHFT,
     _NUM,
     _SYM,
     _NAV,
     _ADJUST,
-    _GSHFT,
 };
 
 // Aliases for readability
@@ -429,6 +429,17 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
       ENCODER_CCW_CW(KC_VOLD, KC_VOLU)
     },
     [1] = {
+      // GSHFT
+      ENCODER_CCW_CW(KC_VOLD, KC_VOLU),
+      ENCODER_CCW_CW(KC_NO, KC_NO),
+      ENCODER_CCW_CW(KC_NO, KC_NO),
+      ENCODER_CCW_CW(KC_LEFT, KC_RIGHT),
+      ENCODER_CCW_CW(KC_PGUP, KC_PGDN),
+      ENCODER_CCW_CW(KC_NO, KC_NO),
+      ENCODER_CCW_CW(KC_NO, KC_NO),
+      ENCODER_CCW_CW(KC_VOLD, KC_VOLU)
+    },
+    [2] = {
       // NUM
       ENCODER_CCW_CW(KC_VOLD, KC_VOLU),
       ENCODER_CCW_CW(KC_NO, KC_NO),
@@ -439,7 +450,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
       ENCODER_CCW_CW(KC_NO, KC_NO),
       ENCODER_CCW_CW(KC_VOLD, KC_VOLU)
     },
-    [2] = {
+    [3] = {
       // SYM
       ENCODER_CCW_CW(KC_BRID, KC_BRIU),
       ENCODER_CCW_CW(KC_NO, KC_NO),
@@ -450,7 +461,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
       ENCODER_CCW_CW(KC_NO, KC_NO),
       ENCODER_CCW_CW(KC_VOLD, KC_VOLU)
     },
-    [3] = {
+    [4] = {
       // NAV
       ENCODER_CCW_CW(KC_VOLD, KC_VOLU),
       ENCODER_CCW_CW(KC_NO, KC_NO),
@@ -461,19 +472,8 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
       ENCODER_CCW_CW(KC_NO, KC_NO),
       ENCODER_CCW_CW(KC_VOLD, KC_VOLU)
     },
-    [4] = {
-      // ADJUST
-      ENCODER_CCW_CW(KC_VOLD, KC_VOLU),
-      ENCODER_CCW_CW(KC_NO, KC_NO),
-      ENCODER_CCW_CW(KC_NO, KC_NO),
-      ENCODER_CCW_CW(KC_LEFT, KC_RIGHT),
-      ENCODER_CCW_CW(KC_PGUP, KC_PGDN),
-      ENCODER_CCW_CW(KC_NO, KC_NO),
-      ENCODER_CCW_CW(KC_NO, KC_NO),
-      ENCODER_CCW_CW(KC_VOLD, KC_VOLU)
-    },
     [5] = {
-      // GSHFT
+      // ADJUST
       ENCODER_CCW_CW(KC_VOLD, KC_VOLU),
       ENCODER_CCW_CW(KC_NO, KC_NO),
       ENCODER_CCW_CW(KC_NO, KC_NO),
