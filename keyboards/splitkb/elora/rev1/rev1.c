@@ -81,7 +81,6 @@ void keyboard_pre_init_kb(void) {
     // So make sure it is available well before we need it
     spi_init();
 
-    // Call user defined function
     keyboard_pre_init_user();
 }
 
@@ -90,7 +89,6 @@ void keyboard_post_init_kb(void) {
     myriad_init();
     #endif
 
-    // Call user defined function
     keyboard_post_init_user();
 }
 

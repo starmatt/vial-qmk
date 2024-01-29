@@ -326,6 +326,8 @@ bool myriad_hook_matrix(matrix_row_t current_matrix[]) {
         word |= ((!readPin(MYRIAD_GPIO1)) & 1) << 3;
     } else if (card == SKB_ENCODER) {
         word |= ((!readPin(MYRIAD_GPIO1)) & 1) << 4;
+    } else if (card == SKB_JOYSTICK) {
+        word |= ((!readPin(MYRIAD_GPIO1)) & 1) << 4;
     } else {
         return false;
     }
@@ -380,7 +382,6 @@ static void myr_joystick_task(void) {
     // .. and set the report
     report.y = y;
     report.x = x;
-    report.buttons = (!readPin(MYRIAD_GPIO1)) & 1;
     pointing_device_set_report(report);
 }
 
