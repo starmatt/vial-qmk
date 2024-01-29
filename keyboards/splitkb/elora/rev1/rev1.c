@@ -80,12 +80,16 @@ void keyboard_pre_init_kb(void) {
     // We have to get the SPI interface working quite early,
     // So make sure it is available well before we need it
     spi_init();
+    
+    keyboard_pre_init_user();
 }
 
 void keyboard_post_init_kb(void) {
     #ifdef MYRIAD_ENABLE
     myriad_init();
     #endif
+
+    keyboard_post_init_user();
 }
 
 //// Matrix functionality
