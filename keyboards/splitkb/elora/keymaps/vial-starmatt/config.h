@@ -16,14 +16,17 @@
 
 #pragma once
 
-// RGBs
-#define RGBLIGHT_SLEEP
+#define SPLIT_USB_DETECT
+#define SPLIT_WATCHDOG_ENABLE
 
 // Myriad boilerplate
 #define MYRIAD_ENABLE
 
 // Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed
 #define DEBOUNCE 5
+
+// Turn off the RGB leds when sleeping or shutting down
+#define RGBLIGHT_SLEEP
 
 /// Vial-specific settings
 
