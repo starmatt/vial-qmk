@@ -17,6 +17,7 @@
 
 # OLED: optional, can be installed in socket
 OLED_ENABLE = yes          # Enable OLEDs, `yes` or `no`
+SRC += oled.c              # Custom OLED renders
 
 # Audio: optional, requires soldering
 # The Elora is equipped with a footprint

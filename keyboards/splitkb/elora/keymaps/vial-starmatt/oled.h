@@ -2,6 +2,26 @@
 
 #include QMK_KEYBOARD_H
 
+// Render the currently active layer
+// Use the start_row to render the layer status on a different row
+void render_layers(uint8_t start_row);
+
+// Render the currently active modifiers
+// Use the start_row to render the layer status on a different row
+void render_mods(uint8_t start_row);
+
+// Render the status of the keyboard LEDs
+// Use the start_row to render the layer status on a different row
+void render_leds(uint8_t start_row);
+
+// Render the META and ALT modifiers
+void render_mods_meta_alt(uint8_t mods);
+
+// Render the CTRL and SHIFT modifiers
+void render_mods_ctrl_shft(uint8_t mods);
+
+// Bitmaps used in renders
+//
 static const char PROGMEM base[] = {
     // 'base2', 64x32px
     0x00, 0x00, 0x00, 0xc0, 0xf0, 0xf8, 0x1c, 0x0c, 0x0e, 0x06, 0x06, 0x06, 0x06, 0x86, 0x86, 0x86,
