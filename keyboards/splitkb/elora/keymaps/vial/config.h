@@ -27,6 +27,9 @@
 // Increase the EEPROM size for layout options
 #define VIA_EEPROM_LAYOUT_OPTIONS_SIZE 2
 
+#define RGB_MATRIX_FRAMEBUFFER_EFFECTS
+#define RGB_MATRIX_KEYPRESSES
+
 // Default is 2, needed because keymap has 7 layers
 #define DYNAMIC_KEYMAP_LAYER_COUNT 8
 

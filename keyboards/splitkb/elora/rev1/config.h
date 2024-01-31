@@ -44,6 +44,10 @@
 // Potential onboard speaker, not populated by default
 #define AUDIO_PIN GP23
 
+// Transmitting pointing device status to the master side
+#define SPLIT_POINTING_ENABLE
+#define POINTING_DEVICE_COMBINED
+
 // Handedness
 #define SPLIT_HAND_PIN GP14
 
@@ -62,5 +66,6 @@
 // OLED display
 #ifdef OLED_ENABLE
 #    define OLED_DISPLAY_128X64
-#    define SPLIT_OLED_ENABLE
+#    undef SPLIT_OLED_ENABLE
+#    define OLED_TIMEOUT 0
 #endif
