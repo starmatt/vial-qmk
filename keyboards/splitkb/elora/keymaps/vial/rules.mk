@@ -36,4 +36,5 @@ NKRO_ENABLE = yes          # Enable N-Key Rollover
 
 VIA_ENABLE = yes
 VIAL_ENABLE = yes
+VIALRGB_ENABLE = yes
 ENCODER_MAP_ENABLE = yes

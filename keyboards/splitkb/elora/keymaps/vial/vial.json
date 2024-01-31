@@ -2,7 +2,7 @@
     "name": "Elora",
     "vendorId":"0x8D1D",
     "productId":"0x9D9D",
-    "lighting":"qmk_rgblight",
+    "lighting": "vialrgb",
     "matrix":{
         "rows":12,
         "cols":8
