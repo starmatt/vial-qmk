@@ -37,7 +37,7 @@
 #define RGB_MATRIX_KEYPRESSES
 
 // Default is 2, needed because keymap has 7 layers
-#define DYNAMIC_KEYMAP_LAYER_COUNT 6
+#define DYNAMIC_KEYMAP_LAYER_COUNT 7
 
 #define VIAL_KEYBOARD_UID {0xB3, 0x8D, 0x94, 0xDA, 0xB3, 0xD7, 0xDC, 0x3D}
 

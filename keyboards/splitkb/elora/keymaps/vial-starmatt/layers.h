@@ -8,6 +8,7 @@ enum layers {
     _SYM,
     _NAV,
     _ADJUST,
+    _MOUSE,
 };
 
 // Aliases for readability
@@ -17,3 +18,4 @@ enum layers {
 #define SYM      MO(_SYM)
 #define NAV      MO(_NAV)
 #define ADJUST   TG(_ADJUST)
+#define MOUSE    TG(_MOUSE)

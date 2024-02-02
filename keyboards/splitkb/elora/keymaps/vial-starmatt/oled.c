@@ -23,6 +23,9 @@ void render_layers(uint8_t start_row) {
         case _GSHFT:
             oled_write_raw_P(gshft, sizeof(gshft));
             break;
+        case _MOUSE:
+            oled_write_raw_P(mouse, sizeof(mouse));
+            break;
         default:
             oled_write_P(PSTR("Undefined "), false);
     }
