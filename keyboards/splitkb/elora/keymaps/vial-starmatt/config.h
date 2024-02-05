@@ -26,14 +26,13 @@
 #define DEBOUNCE 5
 
 // Turn off the RGB leds when sleeping or shutting down
-/* #define RGBLIGHT_SLEEP */
 #define RGB_DISABLE_WHEN_USB_SUSPENDED
 
 // OLED display behaviour
 #undef OLED_TIMEOUT
 #define OLED_BRIGHTNESS 128
 #define OLED_FADE_OUT
-#define OLED_FADE_OUT_INTERVAL 1
+#define OLED_FADE_OUT_INTERVAL 5
 #define OLED_TIMEOUT 30000
 
 /// Vial-specific settings
@@ -45,7 +44,7 @@
 #define RGB_MATRIX_KEYPRESSES
 
 // Default is 2, needed because keymap has 7 layers
-#define DYNAMIC_KEYMAP_LAYER_COUNT 7
+#define DYNAMIC_KEYMAP_LAYER_COUNT 8
 
 #define VIAL_KEYBOARD_UID {0xB3, 0x8D, 0x94, 0xDA, 0xB3, 0xD7, 0xDC, 0x3D}
 
