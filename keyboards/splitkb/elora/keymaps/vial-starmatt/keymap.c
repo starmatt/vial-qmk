@@ -413,6 +413,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
 #endif
 
 void keyboard_post_init_user(void) {
-    rgblight_enable_noeeprom(); // Enables RGB, without saving settings
-    rgblight_sethsv_noeeprom(HSV_PURPLE);
+    rgb_matrix_enable_noeeprom();
+    rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR);
+    rgb_matrix_sethsv_noeeprom(HSV_PURPLE);
 }

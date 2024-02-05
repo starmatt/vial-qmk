@@ -26,7 +26,8 @@
 #define DEBOUNCE 5
 
 // Turn off the RGB leds when sleeping or shutting down
-#define RGBLIGHT_SLEEP
+/* #define RGBLIGHT_SLEEP */
+#define RGB_DISABLE_WHEN_USB_SUSPENDED
 
 // OLED display behaviour
 #undef OLED_TIMEOUT
