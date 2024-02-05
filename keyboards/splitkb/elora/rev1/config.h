@@ -67,5 +67,5 @@
 #ifdef OLED_ENABLE
 #    define OLED_DISPLAY_128X64
 #    undef SPLIT_OLED_ENABLE
-/* #    define OLED_TIMEOUT 0 */
+#    define OLED_TIMEOUT 0
 #endif

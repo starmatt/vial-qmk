@@ -231,13 +231,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------'      `------'                `---------------------------'      '------'
  */
     [_MOUSE] = LAYOUT_myr(
-      _______, _______, _______, _______, _______, _______,          _______, _______,          _______, _______, _______, _______, _______, _______,
-      _______, _______, _______, _______, _______, _______,          _______, _______,          _______, _______, KC_MS_U, _______, _______, _______,
-      _______, _______, _______, _______, _______, _______,          _______, _______,          _______, KC_MS_L, KC_MS_D, KC_MS_R, _______, _______,
-      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_BTN4, KC_BTN5, _______, _______,
-                                 _______, _______, _______, _______, _______, KC_BTN1, KC_BTN2, KC_BTN3, _______, _______,
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, KC_MS_U, XXXXXXX, XXXXXXX, XXXXXXX,
+      XXXXXXX, XXXXXXX, KC_BTN3, KC_BTN2, KC_BTN1, KC_WH_U,          XXXXXXX, XXXXXXX,          XXXXXXX, KC_MS_L, KC_MS_D, KC_MS_R, XXXXXXX, XXXXXXX,
+      XXXXXXX, XXXXXXX, XXXXXXX, KC_BTN4, KC_BTN5, KC_WH_D, XXXXXXX, XXXXXXX, XXXXXXX,  MOUSE , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                                 XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
 
-      _______, _______, _______, _______,          _______,                   _______, _______, _______, _______,          _______
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX
     ),
 
 // /*
