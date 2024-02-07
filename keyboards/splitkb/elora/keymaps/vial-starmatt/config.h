@@ -35,6 +35,9 @@
 #define OLED_FADE_OUT_INTERVAL 5
 #define OLED_TIMEOUT 30000
 
+// Encoder resolution
+#define ENCODER_RESOLUTION 2
+
 /// Vial-specific settings
 
 // Increase the EEPROM size for layout options
