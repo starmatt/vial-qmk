@@ -35,8 +35,11 @@
 #define OLED_FADE_OUT_INTERVAL 5
 #define OLED_TIMEOUT 30000
 
-// Encoder resolution
+// Change the encoders resolution
 #define ENCODER_RESOLUTION 2
+
+// Enable mouse auto mouse layer
+#define POINTING_DEVICE_AUTO_MOUSE_ENABLE
 
 /// Vial-specific settings
 

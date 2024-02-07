@@ -218,11 +218,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |------|  |------|      |------+------+------+------+------+--------|
  * |        |      |      |      |      |      |      |      |  |      |      |      |      | M Up |      |      |        |
  * |--------+------+------+------+------+------|      |------|  |------|      |------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |      |  |      |      |      | MLeft| MDown| MRght|      |        |
+ * |        |      | WlBtn|RClick|LClick| WlUp |      |      |  |      |      |      | MLeft| MDown| MRght|      |        |
  * |--------+------+------+------+------+------+------+------|  |------|------+------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |      |  |      |      |      |      | Btn4 | Btn5 |      |        |
+ * |        |      |      | Btn4 | Btn5 |WlDown|      |      |  |      |      |      |      | Btn4 | Btn5 |      |        |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        |      |      |      |      |      |  |LClick|RClick| WlBtn|      |
+ *                        |      |      |      |      |      |  |      |      |      |      |
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  *
@@ -231,11 +231,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------'      `------'                `---------------------------'      '------'
  */
     [_MOUSE] = LAYOUT_myr(
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, KC_MS_U, XXXXXXX, XXXXXXX, XXXXXXX,
-      XXXXXXX, XXXXXXX, KC_BTN3, KC_BTN2, KC_BTN1, KC_WH_U,          XXXXXXX, XXXXXXX,          XXXXXXX, KC_MS_L, KC_MS_D, KC_MS_R, XXXXXXX, XXXXXXX,
-      XXXXXXX, XXXXXXX, XXXXXXX, KC_BTN4, KC_BTN5, KC_WH_D, XXXXXXX, XXXXXXX, XXXXXXX,  MOUSE , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                 XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+      _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, KC_MS_U, XXXXXXX, XXXXXXX, _______,
+      _______, XXXXXXX, KC_BTN3, KC_BTN2, KC_BTN1, KC_WH_U,          XXXXXXX, XXXXXXX,          XXXXXXX, KC_MS_L, KC_MS_D, KC_MS_R, XXXXXXX, _______,
+      _______, XXXXXXX, XXXXXXX, KC_BTN4, KC_BTN5, KC_WH_D, XXXXXXX, XXXXXXX, XXXXXXX,  MOUSE , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+                                 _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
 
       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX
     ),
@@ -304,6 +304,11 @@ void keyboard_post_init_user(void) {
     rgb_matrix_enable_noeeprom();
     rgb_matrix_mode_noeeprom(RGB_MATRIX_SOLID_COLOR);
     rgb_matrix_sethsv_noeeprom(HSV_PURPLE);
+}
+
+void pointing_device_init_user(void) {
+    set_auto_mouse_layer(_MOUSE);
+    set_auto_mouse_enable(true);
 }
 
 #ifdef OLED_ENABLE
