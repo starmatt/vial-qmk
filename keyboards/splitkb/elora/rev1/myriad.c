@@ -178,9 +178,7 @@ static myriad_card_t _detect_myriad(void) {
     if (!read_card_identity(data, data_size, &identity)) { return INVALID; }
 
     if (identity.vendor_id == 0x0001 && identity.product_id == 0x0001) {
-        // return SKB_ENCODER;
-        // FIX: /!\ Workaround for Joystick not working
-        return SKB_JOYSTICK;
+        return SKB_ENCODER;
     } else if (identity.vendor_id == 0x0001 && identity.product_id == 0x0002) {
         return SKB_JOYSTICK;
     } else if (identity.vendor_id == 0x0001 && identity.product_id == 0x0003) {
