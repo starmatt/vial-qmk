@@ -33,9 +33,6 @@ EXTRAKEY_ENABLE = yes      # Audio and system control
 # N-key rollover instead of 6-key rollover
 NKRO_ENABLE = yes          # Enable N-Key Rollover
 
-# Enable WPM counter
-WPM_ENABLE = yes
-
 ## Vial-specific settings
 
 VIA_ENABLE = yes
